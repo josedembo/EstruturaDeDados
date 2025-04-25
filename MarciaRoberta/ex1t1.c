@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct RegInt {
+    int num;
+    struct RegInt *prox;
+};
+
+void imprimeLista(struct RegInt *p)
+{
+    struct RegInt *q;
+    
+    printf("\n \n");
+    
+    q = p;
+    
+    while (q!= NULL)
+    {
+        printf("%d ", q->num);
+        q = q->prox;
+    }
+    printf("\n \n");
+}
+
+int main() {
+    // Write C code here
+    struct RegInt *pLista, *a, *b, *c, *d;
+    
+    a = malloc(sizeof(struct RegInt));
+    b = malloc(sizeof(struct RegInt));
+    c = malloc(sizeof(struct RegInt));
+    d = malloc(sizeof(struct RegInt));
+    
+    a->num = 2; a->prox = b;
+    b->num = 7; b->prox = c;
+    c->num = 13; c->prox = d;
+    d->num = 5; d->prox = NULL;
+    
+    pLista = a;
+    
+    imprimeLista(pLista);
+    
+ 
+}
