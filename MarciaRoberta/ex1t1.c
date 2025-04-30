@@ -42,6 +42,7 @@ int buscaLista(struct RegInt *p, int k)
 int main() {
     // Write C code here
     struct RegInt *pLista, *a, *b, *c, *d;
+    int k = 13;
     
     a = malloc(sizeof(struct RegInt));
     b = malloc(sizeof(struct RegInt));
@@ -56,6 +57,10 @@ int main() {
     pLista = a;
     
     imprimeLista(pLista);
+
     
+     res = buscaLista (pLista, k);
+    if (res== 1) printf("O número %d está na lista", k);
+    else printf ("O número %d está nao lista", k);
  
 }
