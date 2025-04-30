@@ -21,7 +21,24 @@ void imprimeLista(struct RegInt *p)
     }
     printf("\n \n");
 }
-
+int buscaLista(struct RegInt *p, int k)
+{
+    struct RegInt *q;
+    int achei=0;
+    
+    q=p;
+    
+    while(q!=NULL)
+    {
+        if (q->num == k)
+        {
+            achei =1;
+            break;
+        }
+        q = q->prox;
+    }
+    return(achei);
+}
 int main() {
     // Write C code here
     struct RegInt *pLista, *a, *b, *c, *d;
