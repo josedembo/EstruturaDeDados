@@ -41,9 +41,7 @@ int buscaLista(struct RegInt *p, int k)
 struct RegInt* insereInicio(struct RegInt *p, int k)
 {
     struct RegInt *r;
-    
     r = malloc (sizeof(struct RegInt));
-    
     r->num = k;
     r->prox = p; 
     p = r;
@@ -53,18 +51,37 @@ struct RegInt* insereInicio(struct RegInt *p, int k)
 struct RegInt* insereFim(struct RegInt *p, int k)
 {
     struct RegInt *q, *r;
-    
+   
     r = malloc(sizeof(struct RegInt));
     r->num = k;
     r->prox = NULL;
     q = p;
     
     while(q->prox !=NULL)
-        q = q->prox; 
+    {
+        q = q->prox;
+    }
     q->prox = r;
     return(p);
-    
-    
+
+}
+
+struct RegInt* insereOrdenada(struct RegInt *p, int k)
+{
+    struct RegInt *q_a, *q, *r;
+    r = malloc(sizeof(struct RegInt));
+    r->num = k;
+    r->prox = NULL;
+    q_a = NULL;
+    q = p;
+    while (q->num <k)
+    {
+        q_a =q;
+        q = q->prox;
+    }
+    r->prox = q; 
+    q_a->prox = r;
+    return(p);
 }
 
 int main() {
@@ -78,9 +95,9 @@ int main() {
     d = malloc(sizeof(struct RegInt));
     
     a->num = 2; a->prox = b;
-    b->num = 7; b->prox = c;
-    c->num = 13; c->prox = d;
-    d->num = 5; d->prox = NULL;
+    b->num = 5; b->prox = c;
+    c->num = 7; c->prox = d;
+    d->num = 13; d->prox = NULL;
     
     pLista = a;
     
@@ -102,7 +119,14 @@ int main() {
     
     printf("Teste função insereFim \n \n");
     
-    pLista = insereFim(pLista, 6);
+    pLista = insereFim(pLista, 15);
+    
+    imprimeLista(pLista);
+    
+    printf("\n \n");
+    
+    printf("Teste função insereOrdenada \n \n");
+     pLista = insereOrdenada(pLista, 6);
     
     imprimeLista(pLista);
     
